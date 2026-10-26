@@ -119,13 +119,6 @@ if (Test-Path -LiteralPath $ffmpegLicense) {
     throw 'ffmpeg LICENSE was not found in the archive.'
 }
 
-# --- background model -------------------------------------------------------
-$model = Get-ToolFile -Path $ModelFile -Url $modelUrl -Sha256 $modelSha -Name 'isnet-general-use.onnx'
-$modelsOut = Join-Path $stage 'worker\models'
-New-Item -ItemType Directory -Path $modelsOut -Force | Out-Null
-Write-Host 'Copying IS-Net model (178 MB) ...'
-Copy-Item -LiteralPath $model -Destination (Join-Path $modelsOut 'isnet-general-use.onnx') -Force
-
 # --- package ----------------------------------------------------------------
 $zip = $null
 if (-not $SkipPackage) {
@@ -134,7 +127,7 @@ if (-not $SkipPackage) {
         -PackageDirectory $stage `
         -Repository 'ThodProd/ThodMedia' `
         -OutputDirectory $OutputDirectory `
-        -Notes "ThodMedia $Version - converter for images, video, audio and offline background removal."
+        -Notes "ThodMedia $Version - Конвертер фото, видео и аудио. Редактор с удалением фона перенесён в отдельный ThodCanvas."
     if (-not $zip -or -not (Test-Path -LiteralPath $zip)) { throw 'Packaging failed: ZIP was not produced.' }
 
     $releasePath = Join-Path $OutputDirectory 'thodhub-release.json'

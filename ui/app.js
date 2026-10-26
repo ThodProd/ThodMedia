@@ -331,7 +331,7 @@ function buildRow(item) {
   if (item.kind === 'image') {
     row.addEventListener('dblclick', () => {
       setSelected(item.path, true);
-      openEditor(item.path);
+      worker('open', { path: item.path }).catch(err => toast(err.message, true));
     });
   } else {
     row.addEventListener('dblclick', () => worker('open', { path: item.path }).catch(err => toast(err.message, true)));
@@ -1283,6 +1283,7 @@ function closeEditor() {
 /* ------------------------------------------------------------------ */
 
 function setTab(name, persist = true) {
+  if (name === 'bg') name = 'photo';
   const known = ['photo', 'video', 'audio', 'bg'];
   if (!known.includes(name)) name = 'photo';
   state.tab = name;

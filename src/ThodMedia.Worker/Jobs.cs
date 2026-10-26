@@ -86,7 +86,7 @@ internal sealed class JobManager : IAsyncDisposable
 {
     public static readonly HashSet<string> AllowedKinds =
     [
-        "image.convert", "video.convert", "audio.extract", "video.muxAudio", "bg.preview", "bg.apply"
+        "image.convert", "video.convert", "audio.extract", "video.muxAudio"
     ];
 
     private readonly Channel<Job> _queue = Channel.CreateUnbounded<Job>(new UnboundedChannelOptions { SingleReader = true });

@@ -12,7 +12,7 @@ internal sealed class Engine : IAsyncDisposable
     private readonly OutputPlanner _planner;
     private readonly MediaOps _media;
     private readonly VideoOps _video;
-    private readonly BackgroundRemover _background;
+
     private readonly JobManager _jobs;
 
     public Engine(string dataDir)
@@ -23,7 +23,7 @@ internal sealed class Engine : IAsyncDisposable
         _planner = new OutputPlanner(dataDir);
         _media = new MediaOps(_ffmpeg, _scanner, _planner);
         _video = new VideoOps(_ffmpeg, _scanner, _planner);
-        _background = new BackgroundRemover(_ffmpeg, dataDir);
+
         _jobs = new JobManager(RunJobAsync);
         _scanner.CleanCache(TimeSpan.FromDays(14));
     }
@@ -44,7 +44,7 @@ internal sealed class Engine : IAsyncDisposable
                     ffmpeg = ffmpegVersion,
                     ffmpegFound = File.Exists(_ffmpeg.FfmpegPath),
                     ffprobeFound = File.Exists(_ffmpeg.FfprobePath),
-                    modelFound = _background.ModelAvailable,
+                    modelFound = false,
                     platform = "win-x64",
                     cores = Environment.ProcessorCount,
                     cacheDir = _ffmpeg.CacheDirectory
@@ -114,8 +114,8 @@ internal sealed class Engine : IAsyncDisposable
             "video.convert" => _video.ConvertAsync(p, ctx),
             "audio.extract" => _video.ExtractAudioAsync(p, ctx),
             "video.muxAudio" => _video.MuxAudioAsync(p, ctx),
-            "bg.preview" => _background.PreviewAsync(p, ctx),
-            "bg.apply" => _background.ApplyAsync(p, ctx),
+
+
             _ => throw new RpcException(-32602, "Неизвестный тип задания.")
         };
     }
@@ -141,7 +141,7 @@ internal sealed class Engine : IAsyncDisposable
     {
         if (Interlocked.Exchange(ref _disposed, 1) != 0) return;
         await _jobs.DisposeAsync();
-        _background.Dispose();
+
     }
 
     public Task ShutdownAsync() => DisposeAsync().AsTask();
