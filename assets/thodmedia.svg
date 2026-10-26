@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ThodMedia">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f6fed"/>
+      <stop offset="1" stop-color="#00b8a9"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="88" y="108" width="336" height="296" rx="30" fill="#0d1220" opacity=".24"/>
+  <rect x="108" y="126" width="296" height="260" rx="24" fill="#ffffff"/>
+  <circle cx="352" cy="188" r="26" fill="#ffd166"/>
+  <path d="M132 334l74-92 54 62 38-40 74 70H132z" fill="#36415c"/>
+  <path d="M318 226l-22-22-10 10 22 22-22 22 10 10 22-22 22 22 10-10-22-22 22-22-10-10z" fill="#2f6fed"/>
+  <path d="M166 406h180" stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity=".9"/>
+</svg>

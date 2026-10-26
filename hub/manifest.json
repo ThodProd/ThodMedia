@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "hubApi": 1,
+  "id": "thodmedia",
+  "version": "1.0.0",
+  "platform": "win-x64",
+  "mode": "embedded",
+  "ui": "ui/index.html",
+  "worker": {
+    "executable": "worker/ThodMedia.Worker.exe",
+    "arguments": []
+  },
+  "permissions": [
+    "settings",
+    "dialog.folder",
+    "worker"
+  ]
+}

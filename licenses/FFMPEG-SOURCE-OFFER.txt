@@ -1,0 +1,31 @@
+FFmpeg corresponding source offer
+=================================
+
+ThodMedia 1.0.0 bundles ffmpeg 9.0.2 (essentials static build for win-x64,
+built by Gyan Doshi, https://www.gyan.dev/ffmpeg/builds/). The build is
+distributed under the GNU General Public License version 3.
+
+Corresponding source code for ffmpeg 9.0.2 is available here:
+
+  https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz
+  https://ffmpeg.org/releases/ (all releases and checksums)
+
+The build configuration used by the distributor (Gyan Doshi) is published at:
+
+  https://www.gyan.dev/ffmpeg/builds/
+
+For at least three years from the date ThodMedia 1.0.0 was published, the
+ThodProd project will provide the complete corresponding source code on
+request. Requests can be opened at:
+
+  https://github.com/ThodProd/ThodMedia/issues
+
+Alternatively, the exact source archive can be obtained directly from the
+ffmpeg.org links above; those archives contain the complete source for the
+bundled binaries, including all patches applied by the build distributor.
+
+The full text of the GNU General Public License version 3 is included in
+licenses/ffmpeg-COPYING.txt.
+
+ThodMedia's own code is MIT-licensed; the package as a whole is conveyed
+under GPLv3 because it includes the GPLv3 ffmpeg binaries.

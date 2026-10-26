@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>ThodMedia</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H9l2 2h7.5A2.5 2.5 0 0 1 21 9.5v8A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5z"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9" r="1.6"/><path d="m4 17 5-5 4 4 2.5-2.5L20 18"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="13" height="14" rx="2.5"/><path d="m16 10 5-3v10l-5-3"/></symbol>
+  <symbol id="i-audio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></symbol>
+  <symbol id="i-wand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 10-10"/><path d="m13 4 1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/><path d="m19 12 .7 2.1 2.1.7-2.1.7L19 18l-.7-2.5-2.1-.7 2.1-.7z"/></symbol>
+  <symbol id="i-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 20 10 10 20H4v-6z"/><path d="m12 6 6 6"/></symbol>
+  <symbol id="i-eraser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m4 15 7-7a2.5 2.5 0 0 1 3.5 0l3.5 3.5a2.5 2.5 0 0 1 0 3.5L14 19H8z"/><path d="M9 10 18 19"/><path d="M4 20h9"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7 4 12l5 5"/><path d="M4 12h9a6 6 0 0 1 6 6"/></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 7 5 5-5 5"/><path d="M20 12h-9a6 6 0 0 0-6 6"/></symbol>
+  <symbol id="i-fit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M11 8v6M8 11h6m2 5 4.5 4.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.5 9l5.5 1.5-5.5 1.5L12 17.5 10.5 12 5 10.5 10.5 9z"/><path d="m18.5 16 .7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="m8 11 4 4 4-4"/><path d="M5 19h14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10-6.5z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6v6c0 5-3.5 7.8-8 9-4.5-1.2-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 2.5-2.5L20 18"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4v-.2a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/><path d="M10 11v5M14 11v5"/></symbol>
+</svg>
+
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 2.5-2.5L20 18"/></svg>
+      </div>
+      <div>
+        <h1>ThodMedia</h1>
+        <p>конвертер фото, видео и звука · вырезание фона</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <label class="check-inline"><input type="checkbox" id="recursive" checked> Подпапки</label>
+      <button class="btn ghost" id="refresh" title="Обновить список">
+        <svg><use href="#i-refresh"/></svg> Обновить
+      </button>
+      <button class="btn primary" id="pickFolder">
+        <svg><use href="#i-folder"/></svg> Выбрать папку
+      </button>
+    </div>
+  </header>
+
+  <div class="statusbar" id="statusbar">
+    <span class="dot"></span>
+    <span id="statusText">Выберите папку с фото, видео или музыкой — файлы останутся на месте.</span>
+    <span style="flex:1"></span>
+    <span class="badge ok" id="engineBadge" hidden>ffmpeg готов</span>
+  </div>
+
+  <main class="layout">
+    <aside class="library">
+      <div class="library-head">
+        <div class="search">
+          <svg><use href="#i-search"/></svg>
+          <input id="search" type="text" placeholder="Поиск по имени" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="chips" id="filterChips">
+          <button class="chip active" data-filter="all">Все</button>
+          <button class="chip" data-filter="image">Фото</button>
+          <button class="chip" data-filter="video">Видео</button>
+          <button class="chip" data-filter="audio">Звук</button>
+        </div>
+      </div>
+      <div class="file-list" id="fileList">
+        <div class="empty">
+          <svg><use href="#i-folder"/></svg>
+          <div><b>Папка не выбрана</b><br>Нажмите «Выбрать папку» сверху.</div>
+        </div>
+      </div>
+      <div class="library-foot">
+        <span id="fileCount">0 файлов</span>
+        <span class="spacer"></span>
+        <button class="btn ghost" id="selectAll" style="padding:4px 8px;font-size:11.5px">Выбрать все</button>
+        <button class="btn ghost" id="clearSelection" style="padding:4px 8px;font-size:11.5px">Снять</button>
+      </div>
+    </aside>
+
+    <section class="work">
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="photo">Фото</button>
+        <button class="tab" data-tab="video">Видео</button>
+        <button class="tab" data-tab="audio">Звук</button>
+        <button class="tab" data-tab="bg">Удаление фона</button>
+      </nav>
+
+      <div class="tab-body" id="tabBody">
+        <!-- PHOTO -->
+        <section class="tab-panel" id="tab-photo">
+          <div class="tab-grid">
+            <div class="card">
+              <h3>Конвертация изображений</h3>
+              <p class="hint">PNG, JPEG, WebP, AVIF, BMP, TIFF, GIF и десятки других форматов через ffmpeg.</p>
+              <div class="form">
+                <div class="field-row">
+                  <div class="field">
+                    <label for="photoFormat">Формат</label>
+                    <select id="photoFormat">
+                      <option value="png">PNG — без потерь</option>
+                      <option value="jpg">JPEG — фото</option>
+                      <option value="webp" selected>WebP — компактно</option>
+                      <option value="avif">AVIF — максимальное сжатие</option>
+                      <option value="bmp">BMP</option>
+                      <option value="tiff">TIFF</option>
+                      <option value="gif">GIF — первый кадр</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="photoResize">Размер</label>
+                    <select id="photoResize">
+                      <option value="none" selected>Не менять</option>
+                      <option value="fit">Вписать в рамку</option>
+                      <option value="longEdge">Длинная сторона</option>
+                      <option value="percent">Процент</option>
+                      <option value="width">По ширине</option>
+                      <option value="height">По высоте</option>
+                      <option value="exact">Точный размер</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field-row" id="photoDims" hidden>
+                  <div class="field">
+                    <label for="photoW">Ширина, px</label>
+                    <input id="photoW" type="number" min="1" max="20000" placeholder="1920">
+                  </div>
+                  <div class="field" id="photoHField">
+                    <label for="photoH">Высота, px</label>
+                    <input id="photoH" type="number" min="1" max="20000" placeholder="1080">
+                  </div>
+                  <div class="field" id="photoPercentField" hidden>
+                    <label for="photoPercent">Процент</label>
+                    <input id="photoPercent" type="number" min="1" max="800" value="50">
+                  </div>
+                </div>
+                <label class="check-inline"><input type="checkbox" id="photoAllowUpscale"> Разрешать увеличение</label>
+                <div class="field">
+                  <div class="range-head"><label for="photoQuality">Качество</label><b id="photoQualityValue">92</b></div>
+                  <input id="photoQuality" type="range" min="1" max="100" value="92">
+                </div>
+                <div class="field" id="photoBgField" hidden>
+                  <label for="photoBg">Фон для JPEG</label>
+                  <input id="photoBg" type="text" value="#ffffff" placeholder="#ffffff">
+                </div>
+                <label class="check-inline"><input type="checkbox" id="photoKeepMeta"> Сохранять метаданные</label>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Куда сохранить</h3>
+              <p class="hint">По умолчанию — подпапка ThodMedia рядом с исходниками.</p>
+              <div class="form">
+                <div class="field">
+                  <label for="photoOutput">Папка результата</label>
+                  <div class="field-row">
+                    <input id="photoOutput" type="text" placeholder="рядом с исходниками">
+                    <button class="btn" id="photoOutputPick" style="flex:0 0 auto" title="Выбрать папку"><svg><use href="#i-folder"/></svg></button>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="photoSuffix">Суффикс</label>
+                    <input id="photoSuffix" type="text" value="-web" placeholder="-web">
+                  </div>
+                  <div class="field" style="flex:0 0 110px">
+                    <label>&nbsp;</label>
+                    <label class="check-inline"><input type="checkbox" id="photoOverwrite"> Заменять</label>
+                  </div>
+                </div>
+                <button class="btn primary wide" id="photoRun"><svg><use href="#i-play"/></svg> Конвертировать выбранные</button>
+                <div class="note" id="photoSelectionInfo">Выберите изображения в списке слева.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIDEO -->
+        <section class="tab-panel" id="tab-video" hidden>
+          <div class="tab-grid">
+            <div class="card">
+              <h3>Видео</h3>
+              <p class="hint">Перекодирование, изменение размера, точная обрезка и удаление звука.</p>
+              <div class="form">
+                <div class="field-row">
+                  <div class="field">
+                    <label for="videoPreset">Формат</label>
+                    <select id="videoPreset"></select>
+                  </div>
+                  <div class="field">
+                    <label for="videoSpeed">Скорость кодирования</label>
+                    <select id="videoSpeed">
+                      <option value="veryfast">Очень быстро</option>
+                      <option value="fast">Быстро</option>
+                      <option value="medium" selected>Средне</option>
+                      <option value="slow">Медленно, лучше качество</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="range-head"><label for="videoCrf">Качество (CRF, меньше — лучше)</label><b id="videoCrfValue">23</b></div>
+                  <input id="videoCrf" type="range" min="14" max="34" value="23">
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="videoResolution">Разрешение</label>
+                    <select id="videoResolution">
+                      <option value="original" selected>Как в исходнике</option>
+                      <option value="2160">4K · 2160p</option>
+                      <option value="1440">2K · 1440p</option>
+                      <option value="1080">Full HD · 1080p</option>
+                      <option value="720">HD · 720p</option>
+                      <option value="480">480p</option>
+                      <option value="custom">Своя ширина</option>
+                    </select>
+                  </div>
+                  <div class="field" id="videoWidthField" hidden>
+                    <label for="videoW">Ширина, px</label>
+                    <input id="videoW" type="number" min="16" max="7680" placeholder="1920">
+                  </div>
+                  <div class="field">
+                    <label for="videoFps">Кадры/с</label>
+                    <select id="videoFps">
+                      <option value="0" selected>Как в исходнике</option>
+                      <option value="24">24</option>
+                      <option value="30">30</option>
+                      <option value="50">50</option>
+                      <option value="60">60</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="videoTrimStart">Начало</label>
+                    <input id="videoTrimStart" type="text" placeholder="00:00:00">
+                  </div>
+                  <div class="field">
+                    <label for="videoTrimEnd">Конец</label>
+                    <input id="videoTrimEnd" type="text" placeholder="конец файла">
+                  </div>
+                  <div class="field" style="flex:0 0 120px">
+                    <label>&nbsp;</label>
+                    <label class="check-inline" title="Быстро, по ключевым кадрам, без перекодирования"><input type="checkbox" id="videoFast"> Быстро</label>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="videoAudio">Звук</label>
+                    <select id="videoAudio">
+                      <option value="keep" selected>Оставить</option>
+                      <option value="remove">Удалить</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="videoAudioBitrate">Битрейт звука</label>
+                    <select id="videoAudioBitrate">
+                      <option value="128">128 kbps</option>
+                      <option value="192" selected>192 kbps</option>
+                      <option value="256">256 kbps</option>
+                      <option value="320">320 kbps</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Результат</h3>
+              <p class="hint">Настройки папки и запуск. Обрезка «Быстро» не перекодирует видео.</p>
+              <div class="form">
+                <div class="field">
+                  <label for="videoOutput">Папка результата</label>
+                  <div class="field-row">
+                    <input id="videoOutput" type="text" placeholder="рядом с исходниками">
+                    <button class="btn" id="videoOutputPick" style="flex:0 0 auto" title="Выбрать папку"><svg><use href="#i-folder"/></svg></button>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="videoSuffix">Суффикс</label>
+                    <input id="videoSuffix" type="text" value="-converted">
+                  </div>
+                  <div class="field" style="flex:0 0 110px">
+                    <label>&nbsp;</label>
+                    <label class="check-inline"><input type="checkbox" id="videoOverwrite"> Заменять</label>
+                  </div>
+                </div>
+                <button class="btn primary wide" id="videoRun"><svg><use href="#i-play"/></svg> Обработать видео</button>
+                <div class="note" id="videoSelectionInfo">Выберите видео в списке слева.</div>
+              </div>
+            </div>
+
+            <div class="card" style="grid-column:1/-1">
+              <h3>Заменить или добавить звук</h3>
+              <p class="hint">Соберите видео заново: дорожка из выбранного аудиофайла заменит, дополнит или смешается с исходной.</p>
+              <div class="form">
+                <div class="field-row">
+                  <div class="field">
+                    <label>Видео</label>
+                    <div class="note" id="muxVideoInfo">Выберите одно видео в списке.</div>
+                  </div>
+                  <div class="field">
+                    <label for="muxAudio">Аудиофайл</label>
+                    <select id="muxAudio"></select>
+                  </div>
+                  <div class="field">
+                    <label for="muxMode">Режим</label>
+                    <select id="muxMode">
+                      <option value="replace" selected>Заменить звук</option>
+                      <option value="add">Добавить второй трек</option>
+                      <option value="mix">Смешать с исходным</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="muxBitrate">Битрейт</label>
+                    <select id="muxBitrate">
+                      <option value="128">128 kbps</option>
+                      <option value="192" selected>192 kbps</option>
+                      <option value="256">256 kbps</option>
+                      <option value="320">320 kbps</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="muxSuffix">Суффикс</label>
+                    <input id="muxSuffix" type="text" value="-audio">
+                  </div>
+                  <div class="field">
+                    <label for="muxOutput">Папка</label>
+                    <div class="field-row">
+                      <input id="muxOutput" type="text" placeholder="рядом с видео">
+                      <button class="btn" id="muxOutputPick" style="flex:0 0 auto"><svg><use href="#i-folder"/></svg></button>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn wide" id="muxRun"><svg><use href="#i-audio"/></svg> Собрать видео со звуком</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AUDIO -->
+        <section class="tab-panel" id="tab-audio" hidden>
+          <div class="tab-grid">
+            <div class="card">
+              <h3>Извлечение звука</h3>
+              <p class="hint">Вытащите дорожку из видео или конвертируйте аудио в другой формат.</p>
+              <div class="form">
+                <div class="field-row">
+                  <div class="field">
+                    <label for="audioFormat">Формат</label>
+                    <select id="audioFormat">
+                      <option value="mp3" selected>MP3</option>
+                      <option value="wav">WAV</option>
+                      <option value="flac">FLAC</option>
+                      <option value="aac">AAC / M4A</option>
+                      <option value="opus">Opus</option>
+                      <option value="copy">Без перекодирования</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="audioBitrate">Битрейт</label>
+                    <select id="audioBitrate">
+                      <option value="128">128 kbps</option>
+                      <option value="192" selected>192 kbps</option>
+                      <option value="256">256 kbps</option>
+                      <option value="320">320 kbps</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="audioTrimStart">Начало</label>
+                    <input id="audioTrimStart" type="text" placeholder="00:00:00">
+                  </div>
+                  <div class="field">
+                    <label for="audioTrimEnd">Конец</label>
+                    <input id="audioTrimEnd" type="text" placeholder="конец файла">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Куда сохранить</h3>
+              <p class="hint">Можно выбрать отдельную папку для аудио.</p>
+              <div class="form">
+                <div class="field">
+                  <label for="audioOutput">Папка результата</label>
+                  <div class="field-row">
+                    <input id="audioOutput" type="text" placeholder="рядом с исходниками">
+                    <button class="btn" id="audioOutputPick" style="flex:0 0 auto"><svg><use href="#i-folder"/></svg></button>
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="audioSuffix">Суффикс</label>
+                    <input id="audioSuffix" type="text" value="-audio">
+                  </div>
+                  <div class="field" style="flex:0 0 110px">
+                    <label>&nbsp;</label>
+                    <label class="check-inline"><input type="checkbox" id="audioOverwrite"> Заменять</label>
+                  </div>
+                </div>
+                <button class="btn primary wide" id="audioRun"><svg><use href="#i-play"/></svg> Извлечь звук</button>
+                <div class="note" id="audioSelectionInfo">Выберите видео или аудио в списке.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BACKGROUND -->
+        <section class="tab-panel" id="tab-bg" hidden>
+          <div class="card">
+            <div class="bg-intro">
+              <div class="bg-thumb" id="bgSelectedThumb"><svg style="width:34px;height:34px"><use href="#i-image"/></svg></div>
+              <div>
+                <h3>Удаление фона нейросетью</h3>
+                <p class="hint" id="bgSelectedName">Выберите изображение в списке слева — откроется редактор с мягкой кистью и предпросмотром.</p>
+                <ul class="feature-list">
+                  <li><span class="tick"><svg style="width:15px;height:15px"><use href="#i-check"/></svg></span><span><b>IS-Net</b> находит объект офлайн, без загрузки фото в интернет.</span></li>
+                  <li><span class="tick"><svg style="width:15px;height:15px"><use href="#i-check"/></svg></span><span><b>Кисть и ластик</b> с мягкими краями: уберите лишнее или верните детали.</span></li>
+                  <li><span class="tick"><svg style="width:15px;height:15px"><use href="#i-check"/></svg></span><span><b>Уточнение краёв</b> и растушёвка — без рваных пикселей, сохранение в PNG.</span></li>
+                </ul>
+                <div class="actions" style="margin-top:13px">
+                  <button class="btn primary" id="bgOpen"><svg><use href="#i-wand"/></svg> Открыть редактор</button>
+                  <span class="badge" id="bgModelBadge">проверяю модель…</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h3>Сохранение</h3>
+            <div class="form">
+              <div class="field-row">
+                <div class="field">
+                  <label for="bgOutput">Папка результата</label>
+                  <div class="field-row">
+                    <input id="bgOutput" type="text" placeholder="рядом с исходником">
+                    <button class="btn" id="bgOutputPick" style="flex:0 0 auto"><svg><use href="#i-folder"/></svg></button>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="bgSuffix">Суффикс</label>
+                  <input id="bgSuffix" type="text" value="-cutout">
+                </div>
+              </div>
+              <div class="note">PNG с прозрачностью сохраняется в выбранную папку. Данные и кэш — только в <b>THODHUB_DATA_DIR</b>.</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="jobs" id="jobPanel" hidden>
+        <div class="job-head">
+          <div class="spinner" id="jobSpinner"></div>
+          <div class="job-title" id="jobTitle">Обработка…</div>
+          <div class="job-pct" id="jobPct">0%</div>
+          <button class="btn ghost" id="jobCancel" style="padding:4px 8px;font-size:11px">Отмена</button>
+        </div>
+        <div class="progress"><div id="jobBar"></div></div>
+        <div class="job-result" id="jobResult"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- BACKGROUND EDITOR -->
+<div class="modal" id="bgEditor" hidden>
+  <div class="editor" id="editorShell">
+    <div class="editor-head">
+      <div>
+        <div class="title" id="edTitle">Удаление фона</div>
+        <div class="sub" id="edSub">загрузка…</div>
+      </div>
+      <div class="spacer"></div>
+      <span class="badge" id="edModelBadge">IS-Net</span>
+      <button class="btn ghost" id="edMobilePanel" title="Настройки" style="display:none"><svg><use href="#i-settings"/></svg></button>
+      <button class="btn ghost" id="edClose" title="Закрыть"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <div class="editor-body">
+      <div class="toolrail">
+        <button class="tool active" id="edBrush" title="Кисть: вернуть объект (B)"><svg><use href="#i-brush"/></svg></button>
+        <button class="tool" id="edEraser" title="Ластик: убрать фон (E)"><svg><use href="#i-eraser"/></svg></button>
+        <div class="tool-sep"></div>
+        <button class="tool" id="edUndo" title="Отменить (Ctrl+Z)"><svg><use href="#i-undo"/></svg></button>
+        <button class="tool" id="edRedo" title="Повторить (Ctrl+Y)"><svg><use href="#i-redo"/></svg></button>
+        <div class="tool-sep"></div>
+        <button class="tool" id="edFit" title="Вписать в окно (0)"><svg><use href="#i-fit"/></svg></button>
+        <button class="tool" id="edZoomOut" title="Уменьшить"><svg><use href="#i-zoom"/></svg></button>
+        <button class="tool" id="edZoomIn" title="Увеличить"><svg><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="canvas-wrap" id="edViewport">
+        <div class="canvas-stack" id="edStack">
+          <canvas id="edCanvas"></canvas>
+        </div>
+      </div>
+      <aside class="editor-side" id="edSide">
+        <div>
+          <h4>Фон предпросмотра</h4>
+          <div class="swatches" id="edSwatches">
+            <button class="swatch checker active" data-bg="checker" title="Прозрачность"></button>
+            <button class="swatch white" data-bg="white" title="Белый"></button>
+            <button class="swatch black" data-bg="black" title="Чёрный"></button>
+            <button class="swatch green" data-bg="green" title="Хромакей"></button>
+          </div>
+        </div>
+        <div class="tool-params">
+          <div class="field">
+            <div class="range-head"><label for="edSize">Кисть</label><b id="edSizeVal">48 px</b></div>
+            <input id="edSize" type="range" min="6" max="320" value="48">
+          </div>
+          <div class="field">
+            <div class="range-head"><label for="edHardness">Жёсткость</label><b id="edHardnessVal">45%</b></div>
+            <input id="edHardness" type="range" min="0" max="100" value="45">
+          </div>
+          <div class="field">
+            <div class="range-head"><label for="edFeather">Растушёвка края</label><b id="edFeatherVal">2 px</b></div>
+            <input id="edFeather" type="range" min="0" max="20" value="2">
+          </div>
+          <label class="check-inline"><input type="checkbox" id="edRefine" checked> Уточнять края по фото</label>
+        </div>
+        <div>
+          <h4>Сохранение</h4>
+          <div class="form">
+            <div class="field">
+              <label for="edOutput">Папка</label>
+              <div class="field-row">
+                <input id="edOutput" type="text" placeholder="рядом с исходником">
+                <button class="btn" id="edOutputPick" style="flex:0 0 auto"><svg><use href="#i-folder"/></svg></button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="edSuffix">Суффикс</label>
+              <input id="edSuffix" type="text" value="-cutout">
+            </div>
+            <button class="btn primary wide" id="edApply"><svg><use href="#i-download"/></svg> Сохранить PNG</button>
+            <label class="check-inline"><input type="checkbox" id="edOverwrite"> Заменять существующий</label>
+          </div>
+        </div>
+        <div class="note">Колесо мыши — зум к курсору. Средняя кнопка или пробел + перетаскивание — панорама. B — кисть, E — ластик.</div>
+        <div class="progress" id="edProgressWrap" hidden><div id="edProgress"></div></div>
+        <div class="note" id="edMessage" hidden></div>
+      </aside>
+    </div>
+    <div class="editor-status">
+      <span>Кисть: <b id="edCursorInfo">48 px · 45%</b></span>
+      <span>Масштаб: <b id="edZoomVal">100%</b></span>
+      <span style="flex:1"></span>
+      <span id="edStatus">Готово</span>
+    </div>
+  </div>
+  <div class="brush-cursor" id="edCursor"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="thodhub.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

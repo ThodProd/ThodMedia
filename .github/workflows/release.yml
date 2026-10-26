@@ -1,0 +1,69 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'hub-v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (X.Y.Z) for a manual build'
+        required: true
+        default: '1.0.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Cache bundled tools
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: thodmedia-tools-ffmpeg-9.0.2-isnet-1
+
+      - name: Resolve version
+        id: vars
+        shell: pwsh
+        run: |
+          if ('${{ github.ref_type }}' -eq 'tag') {
+            $version = '${{ github.ref_name }}' -replace '^hub-v', ''
+          } else {
+            $version = '${{ inputs.version }}'
+          }
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Build package
+        shell: pwsh
+        run: .\scripts\build.ps1 -Version '${{ steps.vars.outputs.version }}'
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thodmedia-${{ steps.vars.outputs.version }}
+          path: |
+            artifacts/thodmedia-*-win-x64.zip
+            artifacts/thodhub-release.json
+          if-no-files-found: error
+
+      - name: Publish GitHub release
+        if: github.ref_type == 'tag'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $version = '${{ steps.vars.outputs.version }}'
+          $zip = Get-ChildItem 'artifacts\thodmedia-*-win-x64.zip' | Select-Object -First 1
+          gh release create "hub-v$version" $zip.FullName 'artifacts\thodhub-release.json' `
+            --repo '${{ github.repository }}' `
+            --title "ThodMedia $version" `
+            --notes "ThodMedia $version — конвертер фото, видео и звука с офлайн-удалением фона для ThodHUB." `
+            --latest
