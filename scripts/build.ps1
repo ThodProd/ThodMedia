@@ -12,7 +12,7 @@
 param(
     [string]$Version = '',
     [string]$Configuration = 'Release',
-    [string]$OutputDirectory = (Join-Path $PSScriptRoot '..\artifacts'),
+    [string]$OutputDirectory = '',
     [string]$FfmpegZip = '',
     [string]$ModelFile = '',
     [switch]$SkipPackage
@@ -28,6 +28,7 @@ if ($Version -notmatch '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$') {
     throw "Version must look like 1.2.3, got '$Version'."
 }
 
+if (-not $OutputDirectory) { $OutputDirectory = Join-Path $root 'artifacts' }
 $OutputDirectory = [System.IO.Path]::GetFullPath($OutputDirectory)
 $cache = Join-Path $root '.cache'
 $stage = Join-Path $OutputDirectory "stage-$Version"
@@ -84,7 +85,8 @@ foreach ($file in 'index.html', 'styles.css', 'app.js', 'thodhub.js') {
 
 # --- manifest ---------------------------------------------------------------
 $manifest.version = $Version
-$manifest | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath (Join-Path $stage 'manifest.json') -Encoding utf8
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText((Join-Path $stage 'manifest.json'), ($manifest | ConvertTo-Json -Depth 10), $utf8NoBom)
 
 # --- bundled docs / licenses ------------------------------------------------
 foreach ($file in 'README.md', 'THIRD-PARTY-NOTICES.md', 'LICENSE') {

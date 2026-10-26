@@ -23,5 +23,6 @@ $release = [ordered]@{
     platform = $manifest.platform
     hubApi = $manifest.hubApi
 }
-$release | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $OutputDirectory 'thodhub-release.json') -Encoding utf8
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText((Join-Path $OutputDirectory 'thodhub-release.json'), ($release | ConvertTo-Json -Depth 5), $utf8NoBom)
 Write-Output $zip

@@ -9,7 +9,7 @@ on:
       version:
         description: 'Version (X.Y.Z) for a manual build'
         required: true
-        default: '1.0.0'
+        default: '1.0.1'
 
 permissions:
   contents: write
